@@ -2,6 +2,53 @@
 
 let grid = document.getElementById('grid')    
 
+let wordList= [
+	'patio',
+	'darts',
+	'piano',
+	'horse',
+	'hello',
+	'water',
+	'pizza',
+	'sushi',
+	'crabs',
+
+];
+
+let randomIndex= Math.floor(Math.random()*wordList.length)
+let secret = wordList[randomIndex]
+
+let attempts = []
+let currentAttempt=''
+
+buildGrid();
+updateGrid()
+window.addEventListener('keydown', handleKeyDown)
+
+
+function handleKeyDown(e){
+	let letter = e.key.toLowerCase()
+	if (letter === 'enter'){
+		if(currentAttempt.length < 5){
+			return
+		}
+		if(!wordList.includes(currentAttempt)){
+			alert("not in my thesaurus")
+			return
+		}
+		attempts.push(currentAttempt)
+		currentAttempt= ''
+	}else if(letter === 'backspace'){
+		currentAttempt = currentAttempt.slice(0,currentAttempt-1)
+	}else if(/[a-z]/.test(letter)){
+		if(currentAttempt.length < 5){
+			currentAttempt +=letter
+		}
+	}
+	updateGrid()
+	
+}
+
 function buildGrid(){
 	for (let i=0; i<6; i++){
 		let row = document.createElement('div')
@@ -14,34 +61,18 @@ function buildGrid(){
 	grid.appendChild(row)
 	}
 }
-buildGrid();
-
-let wordList= [
-	//'patio',
-	//'darts',
-	//'piano',
-	'horse',
-];
-
-let randomIndex= Math.floor(Math.random()*wordList.length)
-let secret = wordList[randomIndex]
-
-let attempts = ['rohan','wowzy','horse']
-let currentAttempt=''
-
-updateGrid()
 
 function updateGrid(){
 	let row = grid.firstChild
 	for (let attempt of attempts){
-		drawPastAttempt(row,attempt)
+		drawAttempt(row,attempt,false)
 		row=row.nextSibling
 	}
-	drawCurrentAttempt(row,currentAttempt)
+	drawAttempt(row,currentAttempt,true)
 	row = row.nextSibling
 }
 
-function drawPastAttempt(row, attempt){
+function drawAttempt(row, attempt,isCurrent){
 	for (let i = 0; i<5 ; i++){
 		let cell = row.children[i]
 		if (attempt[i] !== undefined){
@@ -50,7 +81,11 @@ function drawPastAttempt(row, attempt){
 		else{
 			cell.innerHTML = '<div style="opacity:0">X</div>'
 		}
-		cell.style.background = getByColor(attempt,i)
+		if (isCurrent){
+			cell.style.background = '#111'
+		}else{
+			cell.style.background = getByColor(attempt,i)
+		}
 		
 	}
 }
