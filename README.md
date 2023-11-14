@@ -23,5 +23,8 @@
 	   - all row are empty
 	   - as i fill out my guess, background is black
 	   - filled out cells have slight border highlight
-![wordleVo](https://github.com/Mohd-Sayeedul-Hoda/Wordle_V0/wordleVo.png)
+![wordleVo](wordleVo.png)
+<p>
+    <img src"wordleVo.png" width="220" height="240" />
+</p>
     
