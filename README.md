@@ -23,8 +23,8 @@
 	   - all row are empty
 	   - as i fill out my guess, background is black
 	   - filled out cells have slight border highlight
-![wordleVo](wordleVo.png)
+![wordleVo](wordle_vo.png)
 <p>
-    <img src"wordleVo.png" width="220" height="240" />
+    <img src"wordle_vo.png" width="220" height="240" />
 </p>
     
