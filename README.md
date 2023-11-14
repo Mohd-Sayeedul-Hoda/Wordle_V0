@@ -23,5 +23,5 @@
 	   - all row are empty
 	   - as i fill out my guess, background is black
 	   - filled out cells have slight border highlight
-     ![wordleVo](https://github.com/Mohd-Sayeedul-Hoda/Wordle_V0/assets/108780050/8512b39e-edff-4093-810e-5c364ee84e81)
+     ![wordleVo](https://github.com/Mohd-Sayeedul-Hoda/Wordle_V0/wordleVo.png)
     
